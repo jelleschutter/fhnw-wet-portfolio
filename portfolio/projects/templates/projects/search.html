@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Search</h2>
+    <form method="get">
+        <div class="form-group">
+            <input type="text" name="query" class="form-control" value="{{ query }}">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+    <h1>Results for &#171;{{ query }}&#187;</h1>
+    {% if project_list %}
+    <div class="project-list--wrapper">
+        {% for project in project_list %}
+            <a class="project-list--item" href="{% url 'projects:project-detail' project.id %}">
+                <img class="project-list--image" src="{{ project.image.url }}" alt="{{ project.title }}">
+                <p class="project-list--title">{{ project.title }}</p>
+            </a>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p class="text-center">No results found.</p>
+    {% endif %}
+{% endblock content %}

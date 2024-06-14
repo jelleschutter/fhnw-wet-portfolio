@@ -1,0 +1,28 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | Jelle Schutter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block extra_head %}{% endblock extra_head %}
+</head>
+<body>
+    <nav>
+        <a href="{% url 'about_me:index' %}">About Me</a>
+        <a href="{% url 'projects:index' %}">Projects</a>
+        <a href="{% url 'about_me:contact' %}">Contact</a>
+    </nav>
+    <main>
+        {% block content %}
+        <h1>Not Found</h1>
+        {% endblock content %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Jelle Schutter</p>
+    </footer>
+</body>
+</html>

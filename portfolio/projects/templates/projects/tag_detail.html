@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Projects with &#171;{{ tag.name }}&#187; Tag</h1>
+
+{% if tag.project_set.all %}
+    <div class="project-list--wrapper">
+        {% for project in tag.project_set.all %}
+            <a class="project-list--item" href="{% url 'projects:project-detail' project.id %}">
+                <img class="project-list--image" src="{{ project.image.url }}" alt="{{ project.title }}">
+                <p class="project-list--title">{{ project.title }}</p>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>This tag has not yet been used. Try again later.</p>
+{% endif %}
+{% endblock content %}

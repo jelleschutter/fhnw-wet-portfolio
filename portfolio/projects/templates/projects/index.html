@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Filter</h2>
+{% if tag_list %}
+    <div class="tag-filter">
+        {% for tag in tag_list %}
+            <a href="{% url 'projects:tag-detail' tag.id %}">{{ tag.name }}</a>{% if not forloop.last %} | {% endif %}
+        {% endfor %}
+    </div>
+    </br>
+{% endif %}
+<form method="get" action="{% url 'projects:search' %}">
+    <div class="form-group">
+        <input type="text" name="query" class="form-control" value="{{ query }}" placeholder="Search for projects...">
+        <button type="submit">Search</button>
+    </div>
+</form>
+
+{% if project_list %}
+    <h1>Projects</h1>
+    <div class="project-list--wrapper">
+        {% for project in project_list %}
+            <a class="project-list--item" href="{% url 'projects:project-detail' project.id %}">
+                <img class="project-list--image" src="{{ project.image.url }}" alt="{{ project.title }}">
+                <p class="project-list--title">{{ project.title }}</p>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No projects are available.</p>
+{% endif %}
+{% endblock content %}

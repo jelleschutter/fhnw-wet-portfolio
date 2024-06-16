@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-# Create your models here.
 class WorkExperience(models.Model):
     title = models.CharField(max_length=100)
     company = models.CharField(max_length=100)

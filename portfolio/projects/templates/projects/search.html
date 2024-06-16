@@ -2,6 +2,7 @@
 
 {% block content %}
     <h2>Search</h2>
+    <hr>
     <form method="get">
         <div class="form-group">
             <input type="text" name="query" class="form-control" value="{{ query }}">
@@ -9,6 +10,7 @@
         </div>
     </form>
     <h1>Results for &#171;{{ query }}&#187;</h1>
+    <hr>
     {% if project_list %}
     <div class="project-list--wrapper">
         {% for project in project_list %}

@@ -73,8 +73,27 @@
 <div class="skills--wrapper">
     {% for skill in skills %}
         <div class="skills--item-name">{{ skill.name }}</div>
-        <div class="skills--item-bar" style="width: {{ skill.proficiency }}%"></div>
+        <div class="skills--item-bar" data-proficiency="{{ skill.proficiency }}"></div>
     {% endfor %}
 </div>
+<script>
+    const skillItems = document.querySelectorAll('.skills--item-bar');
+    const skillIntersectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.style.width = `${entry.target.dataset.proficiency}%`;
+                entry.target.classList.add('skills--item-bar--visible');
+            } else {
+                entry.target.style.width = '';
+                entry.target.classList.remove('skills--item-bar--visible');
+            }
+        });
+    }, {
+        threshold: 0.5,
+    });
+    skillItems.forEach((item) => {
+        skillIntersectionObserver.observe(item);
+    });
+</script>
 {% endif %}
 {% endblock content %}

@@ -2,6 +2,7 @@
 
 {% block content %}
 <h2>Filter</h2>
+<hr>
 {% if tag_list %}
     <div class="tag-filter">
         {% for tag in tag_list %}
@@ -19,6 +20,7 @@
 
 {% if project_list %}
     <h1>Projects</h1>
+    <hr>
     <div class="project-list--wrapper">
         {% for project in project_list %}
             <a class="project-list--item" href="{% url 'projects:project-detail' project.id %}">

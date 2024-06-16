@@ -305,6 +305,8 @@ a:hover {
 
 .skills--item-bar {
     background-color: var(--primary-color);
+    width: 0%;
+    transition: width 1s;
 }
 
 .text-center {

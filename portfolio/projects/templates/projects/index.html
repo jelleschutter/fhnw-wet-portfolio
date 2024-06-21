@@ -9,7 +9,7 @@
             <a href="{% url 'projects:tag-detail' tag.id %}">{{ tag.name }}</a>{% if not forloop.last %} | {% endif %}
         {% endfor %}
     </div>
-    </br>
+    <br/>
 {% endif %}
 <form method="get" action="{% url 'projects:search' %}">
     <div class="form-group">
